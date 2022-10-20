@@ -10,7 +10,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected float _speed;
     [SerializeField] private float _wanderTime;
 
-    protected State currentState = State.isWandering;
+    [SerializeField] protected State currentState = State.isWandering;
 
     protected void Update()
     {

@@ -5,9 +5,12 @@ public class EnemySmart : EnemyBase
     [SerializeField] private float _attackRange;
     [SerializeField] private float _detectPlayerRange;
     [SerializeField] private LayerMask _playerLayerMask;
+    [SerializeField] private float _gapBetweenFiringBullters = 0.5f;
     
     private Shooter _shooter;
     private Transform _player;
+
+    private float _lastShootingTime = 0;
 
     private void Start()
     {
@@ -55,13 +58,23 @@ public class EnemySmart : EnemyBase
             return;
 
         Vector3 playerDirection = _player.position - transform.position;
-        transform.LookAt(playerDirection.normalized);
+        transform.rotation = Quaternion.LookRotation(playerDirection);
 
         if (currentState == State.isChasing)
             transform.position = Vector3.Lerp(transform.position, playerDirection, Time.deltaTime * _speed);
 
         else if (currentState == State.inCombat)
-            _shooter.Shoot(playerDirection);
+        {
+            if (_lastShootingTime > 0)
+            {
+                _lastShootingTime -= Time.deltaTime;
+            }
+            else
+            {
+                _shooter.Shoot(playerDirection);
+                _lastShootingTime = _gapBetweenFiringBullters;
+            }
+        }
     }
 
     private void OnDrawGizmos()

@@ -32,7 +32,10 @@ public class Shooter : MonoBehaviour
         }
     }
 
-    public virtual void Shoot(Vector3 direction) { }
+    public virtual void Shoot(Vector3 direction) 
+    {
+        FireBullet(direction);
+    }
 
     protected void FireBullet(Vector3 direction)
     {

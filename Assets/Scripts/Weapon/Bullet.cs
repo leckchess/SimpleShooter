@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _lifeTime = 2;
+    [SerializeField] private float _damage = 1;
 
     public UnityAction<Transform> onTargetReached;
 
