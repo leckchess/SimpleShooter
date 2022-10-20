@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class Pistol : Shooter
 {
-    public override void Shoot(Vector3 direction)
-    {
-        FireBullet(direction);
-    }
 }

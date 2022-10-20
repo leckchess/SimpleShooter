@@ -8,6 +8,9 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private Button _switchWeaponsButton;
     [SerializeField] private Button _fireWeaponButton;
 
+    [Header("Player")]
+    [SerializeField] private Image _HPImage;
+
     [HideInInspector] public UnityEvent OnShootingButtonPressed;
     [HideInInspector] public UnityEvent OnShootingButtonReleased;
     [HideInInspector] public UnityEvent OnSwitchWeaponPressed;
@@ -32,5 +35,13 @@ public class UIHandler : MonoBehaviour
     public void SetupCurrentWeapon(Texture2D weaponImage)
     {
         _switchWeaponsButton.transform.Find("WeaponImage").GetComponent<RawImage>().texture = weaponImage;
+    }
+
+    public void UpdatePlayerHP(float value)
+    {
+        if (!_HPImage)
+            return;
+
+        _HPImage.fillAmount = value;
     }
 }

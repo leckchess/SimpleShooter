@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float _Health;
+
     private List<Shooter> _weapons;
-
     private int _currentWeaponIndex = 1;
-
     private UIHandler _uiHandler;
+
+    private float _currentHealth;
 
     private void Start()
     {
+        _currentHealth = _Health;
+
         GetUIHandler();
         GetWeapons();
+
     }
 
     private void Shoot()
@@ -43,6 +48,7 @@ public class Player : MonoBehaviour
             _uiHandler.OnShootingButtonPressed.AddListener(Shoot);
             _uiHandler.OnShootingButtonReleased.AddListener(StopShooting);
             _uiHandler.OnSwitchWeaponPressed.AddListener(SwitchWeapons);
+            _uiHandler.UpdatePlayerHP(_currentHealth / _Health);
         }
     }
 
@@ -51,5 +57,24 @@ public class Player : MonoBehaviour
         _weapons = new List<Shooter>();
         _weapons.AddRange(GetComponentsInChildren<Shooter>());
         SwitchWeapons();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("EnemyBullet"))
+        {
+            _currentHealth -= other.GetComponent<Bullet>().Damage;
+
+            if (_uiHandler)
+                _uiHandler.UpdatePlayerHP(_currentHealth / _Health);
+
+            if (_currentHealth <= 0)
+                Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject, 0.1f);
     }
 }

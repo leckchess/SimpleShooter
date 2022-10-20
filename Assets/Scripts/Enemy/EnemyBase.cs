@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
 public class EnemyBase : MonoBehaviour
@@ -9,8 +8,20 @@ public class EnemyBase : MonoBehaviour
 
     [SerializeField] protected float _speed;
     [SerializeField] private float _wanderTime;
+    [SerializeField] private float _health;
+
+    [SerializeField] private Image _hpImage;
 
     [SerializeField] protected State currentState = State.isWandering;
+
+
+    private float _currHealth;
+
+    private void Start()
+    {
+        _currHealth = _health;
+        UpdateHPBar();
+    }
 
     protected void Update()
     {
@@ -32,5 +43,30 @@ public class EnemyBase : MonoBehaviour
     private void Wander()
     {
         transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("PlayerBullet"))
+        {
+            _currHealth -= other.GetComponent<Bullet>().Damage;
+            UpdateHPBar();
+            if (_currHealth <= 0)
+                Die();
+        }
+    }
+
+    private void Die()
+    {
+        currentState = State.isDead;
+        Destroy(gameObject, 0.1f);
+    }
+
+    private void UpdateHPBar()
+    {
+        if (!_hpImage)
+            return;
+
+        _hpImage.fillAmount = _currHealth / _health;
     }
 }

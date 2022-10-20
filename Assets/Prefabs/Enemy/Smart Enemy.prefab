@@ -17,15 +17,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7098494605376672027, guid: a3829cd8d954d4445a388863c67d14b0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 24.714226
       objectReference: {fileID: 0}
     - target: {fileID: 7098494605376672027, guid: a3829cd8d954d4445a388863c67d14b0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 7.2
       objectReference: {fileID: 0}
     - target: {fileID: 7098494605376672027, guid: a3829cd8d954d4445a388863c67d14b0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 38.25047
       objectReference: {fileID: 0}
     - target: {fileID: 7098494605376672027, guid: a3829cd8d954d4445a388863c67d14b0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -57,6 +57,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3829cd8d954d4445a388863c67d14b0, type: 3}
+--- !u!114 &2650763905852113402 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7098494604732114561, guid: a3829cd8d954d4445a388863c67d14b0, type: 3}
+  m_PrefabInstance: {fileID: 5065296694081202043}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2650763905943172716 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7098494605376672023, guid: a3829cd8d954d4445a388863c67d14b0, type: 3}
@@ -91,8 +102,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 0.1
   _wanderTime: 5
-  _attackRange: 10
+  _health: 10
+  _hpImage: {fileID: 2650763905852113402}
+  _attackRange: 20
   _detectPlayerRange: 50
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  _gapBetweenFiringBullters: 0.3

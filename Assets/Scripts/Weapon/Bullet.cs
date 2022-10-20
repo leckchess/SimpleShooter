@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _damage = 1;
 
     public UnityAction<Transform> onTargetReached;
+    public float Damage { get { return _damage; } }
 
     public void Fire(Vector3 direction)
     {
@@ -22,7 +23,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        onTargetReached?.Invoke(transform);
+        if (other.CompareTag("Enemy") && CompareTag("PlayerBullet") || other.CompareTag("Player") && CompareTag("EnemyBullet"))
+            onTargetReached?.Invoke(transform);
     }
     private IEnumerator DestroyBullet()
     {

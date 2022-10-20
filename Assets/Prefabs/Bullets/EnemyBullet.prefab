@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: _speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: -4524652616275790135, guid: 989b9aa5f4afac24ea0c29bfebd280ad, type: 3}
+      propertyPath: _lifeTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 390250478642346795, guid: 989b9aa5f4afac24ea0c29bfebd280ad, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -62,6 +66,10 @@ PrefabInstance:
     - target: {fileID: 8059401775832819680, guid: 989b9aa5f4afac24ea0c29bfebd280ad, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8059401775832819680, guid: 989b9aa5f4afac24ea0c29bfebd280ad, type: 3}
+      propertyPath: m_TagString
+      value: EnemyBullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 989b9aa5f4afac24ea0c29bfebd280ad, type: 3}
