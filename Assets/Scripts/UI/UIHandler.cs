@@ -7,6 +7,7 @@ public class UIHandler : MonoBehaviour
 {
     [SerializeField] private Button _switchWeaponsButton;
     [SerializeField] private Button _fireWeaponButton;
+    [SerializeField] private CanvasGroup _gameoverScreen;
 
     [Header("Player")]
     [SerializeField] private Image _HPImage;
@@ -43,5 +44,14 @@ public class UIHandler : MonoBehaviour
             return;
 
         _HPImage.fillAmount = value;
+    }
+
+    public void EndGame()
+    {
+        if (!_gameoverScreen)
+            return;
+
+        _gameoverScreen.alpha = 1;
+        _gameoverScreen.blocksRaycasts = true;
     }
 }

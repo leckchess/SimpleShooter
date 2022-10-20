@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject, 0.1f);
+        if (_uiHandler)
+            _uiHandler.EndGame();
     }
 }

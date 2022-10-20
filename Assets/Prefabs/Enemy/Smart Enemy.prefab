@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7098494605376672021, guid: a3829cd8d954d4445a388863c67d14b0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fb1363719cdf050499499dfe7aaa0164, type: 2}
     - target: {fileID: 7098494605376672023, guid: a3829cd8d954d4445a388863c67d14b0, type: 3}
       propertyPath: m_Name
       value: Smart Enemy
@@ -104,6 +108,7 @@ MonoBehaviour:
   _wanderTime: 5
   _health: 10
   _hpImage: {fileID: 2650763905852113402}
+  currentState: 0
   _attackRange: 20
   _detectPlayerRange: 50
   _playerLayerMask:
